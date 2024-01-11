@@ -24,9 +24,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={cn(inter.className, "antialiased min-h-screen pt-16")}>
+      <body className={cn(inter.className, "antialiased min-h-screen h-max")}>
         <Providers>
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
           <Toaster />
         </Providers>

@@ -1,40 +1,77 @@
-import { getServerSession } from "next-auth";
-import { RegisterForm } from "./form";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
+import React from "react";
 import Image from "next/image";
 
-export default async function RegisterPage() {
-  const session = await getServerSession(authOptions);
-  if (session?.user) {
-    redirect("/");
-  }
-
+export default function Login() {
   return (
-    <section>
-      <div className="flex flex-col items-center justify-center gap-0 px-6 py-8 mx-auto md:flex-row md:items-center md:justify-center md:gap-16 h-[90vh]">
-        <a
-          href="https://vercel.com/"
-          className="flex items-center xs:mb-8 md:mb-0 text-2xl font-semibold text-gray-900"
-        >
-          <Image
-            src="/vercel.svg"
-            alt="Vercel Logo"
-            className="dark:invert"
-            width={300}
-            height={100}
-            priority
-          />
-        </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Create your account
-            </h1>
-            <RegisterForm />
+    <div className="w-full h-max flex relative">
+      <div className="bg-darkBrown w-2/4 min-h-full h-fit max-h-max">
+        <div className="leftContent text-white mt-[7.650rem] font-montserrat">
+          <div className="textParent mx-[3.8rem] flex flex-col">
+            <p className="font-bold text-[1.680rem] leading-[2.05rem] w-3/4 mb-5">
+              Temukan & Terhubung dengan Komunitas Profesional
+            </p>
+            <p className="text-sm w-[78%] leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequet.
+            </p>
+          </div>
+          <div className="imageParent -mt-16">
+            <Image
+              src="/registerImage.png"
+              alt="E-commerce Picture"
+              width={640}
+              height={100}
+            />
           </div>
         </div>
       </div>
-    </section>
+      <div className="bg-gray w-2/4 min-h-full h-full max-h-max">
+        <div className="rightContent mt-[4.5rem] mb-40 mx-[5.4rem] font-opensans">
+          <div className="header flex w-full flex-col justify-center items-center mb-9">
+            <p className="text-xl font-bold">Selamat datang di UMKMConnect.</p>
+            <p className="text-xs text-lightGray">
+              Lorem ipsum dolor sit amet, consectetur
+            </p>
+          </div>
+          <div className="card bg-white rounded-xl drop-shadow p-12">
+            <div className="logo mb-28"></div>
+            <form action="" className="text-sm">
+              <div className="inputGroup flex flex-col mb-4">
+                <label htmlFor="">Nama Lengkap</label>
+                <input
+                  type="text"
+                  className="border-black/25 border drop-shadow-sm rounded-md py-[0.58rem] px-3 text-xs focus:outline-none"
+                />
+              </div>
+              <div className="inputGroup flex flex-col mb-4">
+                <label htmlFor="">Email</label>
+                <input
+                  type="text"
+                  className="border-black/25 border drop-shadow-sm rounded-md py-[0.58rem] px-3 text-xs focus:outline-none"
+                />
+              </div>
+              <div className="inputGroup flex flex-col mb-4">
+                <label htmlFor="">Kata Sandi</label>
+                <input
+                  type="text"
+                  className="border-black/25 border drop-shadow-sm rounded-md py-[0.58rem] px-3 text-xs focus:outline-none"
+                />
+              </div>
+              <div className="mt-10">
+                <button className="w-full bg-darkBrown py-[0.50rem] text-white font-bold text-lg rounded-md">
+                  Daftar
+                </button>
+              </div>
+              <div className="mt-4 mb-20 align-middle flex">
+                <input type="checkbox" className="me-1 border-white/28" />
+                <label htmlFor="" className="text-black/25">Ingat saya</label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

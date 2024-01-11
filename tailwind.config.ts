@@ -18,6 +18,7 @@ const config: Config = {
     },
     fontFamily: {
       montserrat: ["Montserrat", "sans-serif"],
+      opensans: ["Open Sans", "sans-serif"]
     },
     container: {
       center: true,
@@ -76,6 +77,9 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        darkBrown: "var(--dark-brown)",
+        gray: "var(--gray)",
+        lightGray: "var(--light-gray)",
       },
       borderRadius: {
         lg: "var(--radius)",
