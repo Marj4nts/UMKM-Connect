@@ -12,17 +12,135 @@ datasource db {
   relationMode = "prisma"
 }
 
-enum Role {
-  user
-  admin
+model User {
+  id            Int             @id @default(autoincrement())
+  name          String
+  email         String          @unique
+  password      String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  BusinessUser  BusinessUser[]
+  Storerating   Storerating[]
+  Productrating Productrating[]
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  name      String
-  password  String
-  role      Role     @default(user)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model BusinessUser {
+  id              Int           @id @default(autoincrement())
+  userId          Int
+  storeName       String
+  email           String
+  phoneNumber     String
+  storeAddress    String
+  operationalHour String
+  operationalDay  String
+  description     String
+  profileImage    String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  user            User          @relation(fields: [userId], references: [id])
+  storeratings    Storerating[]
+  locations       Location[]
+  products        Product[]
+  Menu            Menu[]
+  Sale            Sale[]
+  Social          Social[]
+
+  @@index([userId])
+}
+
+model Storerating {
+  id           Int          @id @default(autoincrement())
+  businessId   Int
+  userId       Int
+  ratingValue  Int
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  businessuser BusinessUser @relation(fields: [businessId], references: [id])
+  user         User         @relation(fields: [userId], references: [id])
+
+  @@index([businessId])
+  @@index([userId])
+}
+
+model Location {
+  id             Int          @id @default(autoincrement())
+  businessId     Int
+  locationName   String
+  locationMaps   String
+  locationImage1 String?
+  locationImage2 String?
+  locationImage3 String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  businessuser   BusinessUser @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
+}
+
+model Product {
+  id            Int             @id @default(autoincrement())
+  businessId    Int
+  image         String
+  name          String
+  price         String
+  description   String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  businessuser  BusinessUser    @relation(fields: [businessId], references: [id])
+  productrating Productrating[]
+
+  @@index([businessId])
+}
+
+model Productrating {
+  id          Int      @id @default(autoincrement())
+  productId   Int
+  userId      Int
+  ratingValue Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  product     Product  @relation(fields: [productId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([productId])
+  @@index([userId])
+}
+
+model Menu {
+  id           Int          @id @default(autoincrement())
+  businessId   Int
+  description  String
+  menuImage1   String?
+  menuImage2   String?
+  menuImage3   String?
+  menuImage4   String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  businessuser BusinessUser @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
+}
+
+model Sale {
+  id           Int          @id @default(autoincrement())
+  businessId   Int
+  image        Int
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  businessuser BusinessUser @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
+}
+
+model Social {
+  id           Int          @id @default(autoincrement())
+  businessId   Int
+  instagram    String?
+  facebook     String?
+  tweeter      String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  businessuser BusinessUser @relation(fields: [businessId], references: [id])
+
+  @@index([businessId])
 }

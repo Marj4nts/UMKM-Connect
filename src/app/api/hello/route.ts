@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
             description: "Registers a new user",
             body: {
               name: "string",
-              username: "string",
+              email: "string",
               password: "string",
               confirmPass: "string",
             },

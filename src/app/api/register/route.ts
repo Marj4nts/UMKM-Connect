@@ -7,12 +7,11 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const { name, username, password, confirmPass } =
-      registerSchema.parse(body);
+    const { name, email, password, confirmPass } = registerSchema.parse(body);
 
     const existingUser = await prisma.user.findUnique({
       where: {
-        username: username,
+        email: email,
       },
     });
 
@@ -20,7 +19,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          message: "Username already exists.",
+          message: "Email already exists.",
         },
         {
           status: 400,
@@ -45,14 +44,14 @@ export async function POST(req: NextRequest) {
     const createdUser = await prisma.user.create({
       data: {
         name: name,
-        username: username,
+        email: email,
         password: hashedPassword,
       },
     });
 
     const user = {
       name: createdUser.name,
-      username: createdUser.username,
+      email: createdUser.email,
       password: password,
     };
 

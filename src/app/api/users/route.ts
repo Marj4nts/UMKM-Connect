@@ -7,24 +7,22 @@ import { hash } from "bcrypt";
 export async function POST(req: Request, res: Response) {
   try {
     const body = await req.json();
-    const { name, username, password, role } = userCreationSchema.parse(body);
+    const { name, email, password } = userCreationSchema.parse(body);
 
     const hashedPassword = await hash(password!, 12);
 
     const createdUser = await prisma.user.create({
       data: {
         name: name!,
-        username: username,
+        email: email!,
         password: hashedPassword,
-        role: role,
       },
     });
 
     const user = {
       name: createdUser.name,
-      username: createdUser.username,
+      email: createdUser.email,
       password: hashedPassword,
-      role: createdUser.role,
     };
 
     return NextResponse.json(
@@ -60,16 +58,10 @@ export async function GET(req: NextRequest) {
   }
   try {
     const users = await prisma.user.findMany({
-      where: {
-        role: {
-          not: "admin",
-        },
-      },
       select: {
         id: true,
         name: true,
-        username: true,
-        role: true,
+        email: true,
         createdAt: true,
         updatedAt: true,
       },
