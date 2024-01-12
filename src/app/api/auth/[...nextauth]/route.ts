@@ -7,8 +7,7 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      role: string;
-      username: string;
+      email: string;
       name: string;
     };
   }
@@ -17,15 +16,14 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   interface JWT {
     id: string;
-    role: string;
-    username: string;
+    email: string;
     name: string;
   }
 }
 
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: "/login",
+    signIn: "/register",
   },
   session: {
     strategy: "jwt",
@@ -34,17 +32,17 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Sign in",
       credentials: {
-        username: { label: "Username", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials.password) {
+        if (!credentials?.email || !credentials.password) {
           return null;
         }
 
         const user = await prisma.user.findUnique({
           where: {
-            username: credentials.username,
+            email: credentials.email,
           },
         });
 
@@ -63,9 +61,8 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: user.id + "",
-          username: user.username,
+          email: user.email,
           name: user.name,
-          role: user.role,
         };
       },
     }),
@@ -78,8 +75,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.id,
-          role: token.role,
-          username: token.username,
+          email: token.email,
           name: token.name,
         },
       };
@@ -91,8 +87,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: u.id,
-          role: u.role,
-          username: u.username,
+          email: u.email,
           name: u.name,
         };
       }

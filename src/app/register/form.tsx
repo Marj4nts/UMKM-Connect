@@ -4,8 +4,9 @@ import { useState, ChangeEvent } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 
 export const RegisterForm = () => {
   const { toast } = useToast();
@@ -13,7 +14,7 @@ export const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
     name: "",
-    username: "",
+    email: "",
     password: "",
     confirmPass: "",
   });
@@ -30,23 +31,39 @@ export const RegisterForm = () => {
       setLoading(false);
 
       if (res.data.success) {
+        const searchParams = useSearchParams();
+        const callbackUrl = searchParams.get("callbackUrl") || "/";
+        const res = await signIn("credentials", {
+          redirect: false,
+          email: formValues.email,
+          password: formValues.password,
+          callbackUrl,
+        });
+
         setFormValues({
           name: "",
-          username: "",
+          email: "",
           password: "",
           confirmPass: "",
         });
+        if (!res?.error) {
+          toast({
+            title: "Success",
+            description: "Account created successfully. Logging you in...",
+            variant: "success",
+          });
 
-        toast({
-          title: "Success",
-          description: "Account created successfully.",
-          variant: "success",
-        });
-
-        setTimeout(() => {
-          router.push("/login");
-          router.refresh();
-        }, 500);
+          setTimeout(() => {
+            router.push(callbackUrl);
+            router.refresh();
+          }, 500);
+        } else {
+          toast({
+            title: "Error",
+            description: res.error,
+            variant: "destructive",
+          });
+        }
       }
     } catch (error: any) {
       setLoading(false);
@@ -81,18 +98,18 @@ export const RegisterForm = () => {
           required
         />
       </div>
-      {/* Username */}
+      {/* Email */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Your Username
+          Your Email
         </label>
         <input
           type="text"
-          name="username"
-          value={formValues.username}
+          name="email"
+          value={formValues.email}
           onChange={handleChange}
           className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Your Username"
+          placeholder="Your email"
           required
         />
       </div>

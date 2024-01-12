@@ -23,7 +23,7 @@ export const LoginButton = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +38,7 @@ export const LoginButton = () => {
 
       const res = await signIn("credentials", {
         redirect: false,
-        username: formValues.username,
+        email: formValues.email,
         password: formValues.password,
         callbackUrl,
       });
@@ -46,7 +46,7 @@ export const LoginButton = () => {
       setLoading(false);
 
       if (!res?.error) {
-        setFormValues({ username: "", password: "" });
+        setFormValues({ email: "", password: "" });
         toast({
           title: "Success",
           description: "Login berhasil.",
@@ -60,7 +60,7 @@ export const LoginButton = () => {
       } else {
         toast({
           title: "Error",
-          description: "Gagal login. Periksa username dan password Anda.",
+          description: "Gagal login. Periksa email dan password Anda.",
           variant: "destructive",
         });
       }
@@ -86,15 +86,15 @@ export const LoginButton = () => {
         <form className="grid gap-4 py-4" onSubmit={onSubmit}>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Username
+              Email
             </label>
             <input
               type="text"
-              name="username"
-              value={formValues.username}
+              name="email"
+              value={formValues.email}
               onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Username"
+              placeholder="Email"
               required
             />
           </div>
