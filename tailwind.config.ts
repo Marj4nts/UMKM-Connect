@@ -82,6 +82,7 @@ const config: Config = {
         lightGray: "var(--light-gray)",
         lightBrown: "var(--light-brown)",
         beige: "var(--beige)",
+        navbar: "var(--navbar)",
       },
       borderRadius: {
         lg: "var(--radius)",
