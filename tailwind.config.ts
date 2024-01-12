@@ -80,6 +80,8 @@ const config: Config = {
         darkBrown: "var(--dark-brown)",
         gray: "var(--gray)",
         lightGray: "var(--light-gray)",
+        lightBrown: "var(--light-brown)",
+        beige: "var(--beige)",
       },
       borderRadius: {
         lg: "var(--radius)",
