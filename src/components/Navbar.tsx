@@ -12,7 +12,7 @@ const Navbar = async () => {
     <div
       className={`text-white fixed inset-x-0 top-0 z-[10] h-fit py-3 bg-navbar`}
     >
-      <div className="flex items-center justify-between h-full gap-2 mx-auto max-w-7xl">
+      <div className="flex px-5 items-center justify-between h-full gap-2 mx-auto max-w-7xl">
         {/* Logo */}
         <Link
           href={"/"}
@@ -23,7 +23,7 @@ const Navbar = async () => {
           </p>
         </Link>
         <div className="flex items-center gap-3">
-          <button className="xs:px-2.5 sm:px-4 xs:py-2 sm:py-1.5 font-bold text-white bg-transparent rounded-md hover:bg-gray-900 hover:underline dark:bg-gray-700">
+          <button className="xs:px-2.5 sm:px-4 xs:py-2 sm:py-1.5 text-white bg-transparent rounded-md hover:bg-gray-900 hover:underline dark:bg-gray-700">
             <div className="flex flex-row gap-2 items-center">
               <span className="sm:block">Toko</span>
             </div>

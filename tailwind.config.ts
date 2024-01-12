@@ -83,6 +83,8 @@ const config: Config = {
         lightBrown: "var(--light-brown)",
         beige: "var(--beige)",
         navbar: "var(--navbar)",
+        loginBtn: "var(--login-btn)",
+        loginBtnHover: "var(--login-btn-hover)",
       },
       borderRadius: {
         lg: "var(--radius)",
