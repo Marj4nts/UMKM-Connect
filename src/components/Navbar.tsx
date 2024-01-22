@@ -10,7 +10,7 @@ const Navbar = async () => {
 
   return (
     <div
-      className={`text-white fixed inset-x-0 top-0 z-[10] h-fit py-3 bg-navbar`}
+      className={`text-white fixed inset-x-0 top-0 z-40 h-fit py-3 bg-navbar `}
     >
       <div className="flex px-5 items-center justify-between h-full gap-2 mx-auto max-w-7xl">
         {/* Logo */}
