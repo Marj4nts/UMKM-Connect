@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Permanent+Marker&family=Poppins:wght@200;300;400;500;600;700;800&family=VT323&display=swap");
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 65px 70px;
+    margin-top: 40px;
+
+    .search {
+      padding: 22px 33px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      color: #828080;
+      font-family: "Open Sans", sans-serif;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .parentCard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      width: 100%;
+      gap: 69px;
+      padding-top: 33px;
+
+      .card {
+        max-width: 600px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border-radius: 12px;
+        box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.25);
+        padding: 12px 25px 25px 25px;
+        gap: 25px;
+
+        .profile {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+          gap: 10px;
+
+          .name {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 2px;
+          }
+
+          .name p {
+            color: #000;
+            font-family: "Montserrat", sans-serif;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+        }
+        .profile button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #000;
+          font-family: "Montserrat", sans-serif;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          border-radius: 8px;
+          border: 1.5px solid #544436;
+          padding: 12px 20px;
+          margin-left: 90px;
+        }
+
+        .product {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          width: 100%;
+
+          .containerProduct {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .containerProduct p {
+            color: #000;
+            font-family: "Montserrat", sans-serif;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+}
