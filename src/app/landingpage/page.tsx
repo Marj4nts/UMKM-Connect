@@ -5,12 +5,12 @@ export default function LandingPage() {
   return (
     <div className="h-max w-full relative">
       <div className=" bg-darkBrown flex w-full h-[77vh] z-0 relative overflow-hidden">
-        <div className="leftContent w-2/4 absolute z-20 font-montserrat">
+        <div className="leftContent w-full lg:w-2/4 absolute z-20 font-montserrat">
           <div className="group1 text-white ms-14 mt-[8.2rem] mb-12">
-            <p className="font-bold text-4xl w-3/5 mb-3 font-opensans">
+            <p className="font-bold text-4xl w-full lg:w-3/5 mb-3 font-opensans">
               Lorem Ipsum sit tetur adipiscing
             </p>
-            <p className="text-xs w-4/6 mb-5">
+            <p className="text-xs w-full lg:w-4/6 mb-5">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -26,10 +26,10 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="dotsImage absolute right-16 top-32 z-20">
-          <Image src="/dots.png" alt="dots" width={250} height={100} />
+        <div className="dotsImage absolute bottom-24 right-16 lg:top-32 z-20">
+          <Image src="/dots.png" alt="dots" width={1000} height={1000} className="w-fit h-fit" />
         </div>
-        <div className="rightContent w-2/4 absolute z-20 right-12 bottom-0">
+        <div className="rightContent w-full lg:w-2/4 absolute z-20 right-12 bottom-0">
           <Image
             src="/people1.png"
             alt="People holding glass"
@@ -37,7 +37,7 @@ export default function LandingPage() {
             height={100}
           />
         </div>
-        <div className="polygonImage absolute right-0 z-10">
+        <div className="polygonImage absolute right-0 bottom-0 z-10">
           <Image
             src="/Polygon1.png"
             alt="Polygon Shape"
@@ -46,7 +46,7 @@ export default function LandingPage() {
           />
         </div>
       </div>
-      <div className="searchParent absolute w-full flex justify-center z-20  top-[29rem]">
+      <div className="searchParent absolute w-full flex justify-center z-20 top-[40rem] lg:top-[29rem]">
         <div className="Search flex gap-2 align-middle px-8 py-5 w-4/6 bg-white rounded-full">
           <div className="icon">
             <Image
@@ -64,8 +64,8 @@ export default function LandingPage() {
         </div>
       </div>
       <div className="relative bg-beige w-full h-[64vh] z-10">
-        <div className="categoryListParent w-full h-fit pt-20 flex justify-center">
-          <div className="category w-[70%] flex gap-4">
+        <div className="categoryListParent w-full h-fit pt-20 flex flex-wrap justify-center">
+          <div className="category w-full lg:w-[70%] flex flex-wrap gap-4 justify-center">
             <div className="categoryItem flex flex-col justify-center">
               <div className="icon bg-darkBrown p-5 rounded-md mb-1 drop-shadow-md">
                 <Image
@@ -174,12 +174,12 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="storeListParent font-montserrat flex flex-col items-center top-[48rem] absolute w-full h-fit z-20">
+      <div className="storeListParent font-montserrat flex flex-col items-center top-[72rem] lg:top-[48rem] absolute w-full h-fit z-20">
         <div className="header w-fit font-bold text-lg uppercase mb-3">
           UMKM Di Sekitar Kamu
         </div>
-        <div className="store flex gap-6 w-[91%] h-fit pb-6 overflow-hidden">
-          <div className="storeItem w-[19%] h-max drop-shadow-lg">
+        <div className="store flex gap-6 w-[91%] h-fit pb-6 overflow-hidden flex-wrap lg:flex-nowrap justify-center">
+          <div className="storeItem w-5/12 lg:w-[19%] h-max drop-shadow-lg">
             <div className="image w-full h-[141px] relative rounded-t-xl">
               <Image src="/storeimage.png" alt="Store Image" fill />
             </div>
@@ -188,7 +188,7 @@ export default function LandingPage() {
               <p>09:00 - 22:00</p>
             </div>
           </div>
-          <div className="storeItem w-[19%] h-max drop-shadow-lg">
+          <div className="storeItem w-5/12 lg:w-[19%] h-max drop-shadow-lg">
             <div className="image w-full h-[141px] relative rounded-t-xl">
               <Image src="/storeimage.png" alt="Store Image" fill />
             </div>
@@ -197,7 +197,7 @@ export default function LandingPage() {
               <p>09:00 - 22:00</p>
             </div>
           </div>
-          <div className="storeItem w-[19%] h-max drop-shadow-lg">
+          <div className="storeItem w-5/12 lg:w-[19%] h-max drop-shadow-lg">
             <div className="image w-full h-[141px] relative rounded-t-xl">
               <Image src="/storeimage.png" alt="Store Image" fill />
             </div>
@@ -206,7 +206,7 @@ export default function LandingPage() {
               <p>09:00 - 22:00</p>
             </div>
           </div>
-          <div className="storeItem w-[19%] h-max drop-shadow-lg">
+          <div className="storeItem w-5/12 lg:w-[19%] h-max drop-shadow-lg">
             <div className="image w-full h-[141px] relative rounded-t-xl">
               <Image src="/storeimage.png" alt="Store Image" fill />
             </div>
@@ -215,7 +215,7 @@ export default function LandingPage() {
               <p>09:00 - 22:00</p>
             </div>
           </div>
-          <div className="storeItem w-[19%] h-max drop-shadow-lg">
+          <div className="storeItem w-5/12 lg:w-[19%] h-max drop-shadow-lg">
             <div className="image w-full h-[141px] relative rounded-t-xl">
               <Image src="/storeimage.png" alt="Store Image" fill />
             </div>
@@ -226,16 +226,16 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="relative bg-white w-full h-fit gap-44 z-10 flex flex-col items-center mb-36">
-        <div className="adsParent flex justify-between h-72 mt-52 w-[91%] bg-white drop-shadow-lg">
-          <div className="w-[288px] h-full relative">
+      <div className="relative bg-white w-full h-fit gap-44 z-10 flex flex-col items-center mb-36 mt-[25rem] lg:mt-0">
+        <div className="adsParent flex justify-between h-fit lg:h-72 mt-52 w-[91%] bg-white drop-shadow-lg">
+          <div className="w-2/5 lg:w-[288px] h-2/5 relative">
             <Image src="/storeimage.png" alt="Store Image" fill />
           </div>
-          <div className="w-3/5 my-8 font-opensans text-center">
-            <p className="font-bold text-3xl w-3/4 mx-auto mb-5">
+          <div className="w-3/5 my-4 lg:my-8 font-opensans text-center">
+            <p className="font-bold text-sm lg:text-3xl w-full px-2 lg:px-0 lg:w-3/4 mx-auto mb-5">
               um dolor sit amet, consectetur adipiscing elit,
             </p>
-            <p className="w-3/4 mx-auto text-lightGray">
+            <p className="w-full lg:w-3/4 text-xs text-justify lg:text-base mx-auto text-lightGray px-2 lg:px-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
