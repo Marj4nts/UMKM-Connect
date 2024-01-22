@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-export default function ProfilPerusahaan() {
+export default function ProfilPerusahaanProduk() {
 return (
 <div className='min-h-screen w-full'>
     <div className="banner w-full h-72 relative z-10">
