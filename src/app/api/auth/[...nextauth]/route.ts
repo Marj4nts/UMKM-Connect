@@ -23,7 +23,7 @@ declare module "next-auth/jwt" {
 
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: "/user/landing-page",
+    signIn: "/landingpage",
   },
   session: {
     strategy: "jwt",
